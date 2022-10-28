@@ -16,28 +16,14 @@ module Hipster
     ]
 
     def rank
-      if !FAVE_BANDS.include?(band)
-        return "They can't be that good cause I've never heard of them."
-      end
-
-      FAVE_BANDS.index(band) + 1
+      # TODO: Implement this method by checking the band's position in the FAVE_BANDS array
+      # what happens if the band is not in the array?
     end
 
     def review
-      seed = rand(3)
-      if seed == 0
-        "#{band} are totally overrated."
-      elsif seed == 1
-        "#{band} are totally underrated."
-      else
-        "I liked #{band}'s earlier stuff but then they sold out."
-      end
-    end
-
-    def self.unsolicited_review
-      opinion = Opinion.new
-      opinion.band = FAVE_BANDS.sample
-      opinion.review
+      # TODO: Randomly generate a review for the band (String)
+      # Use the bands name in the review, and make sure to have at least 3 different reviews
+      # Hint: Use the rand() method
     end
   end
 end
