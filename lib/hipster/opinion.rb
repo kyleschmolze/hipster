@@ -1,32 +1,43 @@
 module Hipster
   class Opinion
-    def self.rank(band)
-      case band
-      when "The Beatles"
-        1
-      when "The Rolling Stones"
-        2
-      when "The Who"
-        3
-      when "The Kinks"
-        4
-      when "The Yardbirds"
-        5
-      when "The Animals"
-        6
-      when "The Jimi Hendrix Experience"
-        7
-      when "The Doors"
-        8
-      when "The Velvet Underground"
-        9
-      when "The Byrds"
-        10
-      else
-        "I liked their earlier stuff but then they sold out."
+    attr_accessor :band
+
+    FAVE_BANDS = [
+      "The Beatles",
+      "The Beach Boys",
+      "Radiohead",
+      "Stevie Wonder",
+      "Os Mutantes",
+      "Tom Waits",
+      "The Kinks",
+      "Outkast",
+      "Hiatus Kaiyote",
+      "Bob Dylan",
+    ]
+
+    def rank
+      if !FAVE_BANDS.include?(band)
+        return "They can't be that good cause I've never heard of them."
       end
+
+      FAVE_BANDS.index(band) + 1
+    end
+
+    def review
+      seed = rand(3)
+      if seed == 0
+        "#{band} are totally overrated."
+      elsif seed == 1
+        "#{band} are totally underrated."
+      else
+        "I liked #{band}'s earlier stuff but then they sold out."
+      end
+    end
+
+    def self.unsolicited_review
+      opinion = Opinion.new
+      opinion.band = FAVE_BANDS.sample
+      opinion.review
     end
   end
 end
-
-
